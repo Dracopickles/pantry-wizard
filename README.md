@@ -1,4 +1,4 @@
-# project1
+# pantry-wizard
 KEY TASKS:
 
 1. Create a front-end interface. This site should be mobile-friendly.
