@@ -6,4 +6,9 @@
   height: 6rem;
 }
 
-
+.check-mover{
+  display: flex;
+  flex-direction: column;
+  width: 10rem;
+  height: 5rem;
+}
