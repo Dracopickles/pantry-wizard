@@ -1,0 +1,12 @@
+.ingredientList{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 5rem;
+  height: 6rem;
+
+}
+.ingredient-list{
+  width: 10rem;
+
+}
