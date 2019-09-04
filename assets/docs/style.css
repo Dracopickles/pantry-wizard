@@ -12,3 +12,8 @@
   width: 10rem;
   height: 5rem;
 }
+
+.input-group-append{
+  display: flex;
+  flex-direction: column;
+}
