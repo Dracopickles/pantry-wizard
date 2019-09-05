@@ -1,110 +1,128 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/docs/style.css"/>
-    <title>Hello, world!</title>
-  </head>
-  <body>
-   
-        <div class="jumbotron">
-            <h1 class="display-4">Hello, User!</h1>
-            <p class="lead">With this app, we hope you will find a delicious recipe!</p>
-            <hr class="my-4">
-            <p>And we will keep making improvements to make your home life better!</p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-          </div>
-        <div class="container">     
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="./assets/docs/style.css" />
+  <title>Pantry Wizard</title>
+</head>
+
+<body>
+
+  <div class="jumbotron">
+    <h1 class="display-4">Hello, User!</h1>
+    <p class="lead">With this app, we hope you will find a delicious recipe!</p>
+    <hr class="my-4">
+    <p>And we will keep making improvements to make your home life better!</p>
+    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+  </div>
+  <div class="container">
     <div class="row">
-      <div class="col-4">   
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
-             <p>Max Ten!</p>
+      <div class="col-4">
+        <div class="input-group mb-3">
+          <input type="text" id="keyword-text" class="form-control" aria-label="add-keyword" aria-describedby="add-keyword-button">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="add-keyword-button">Add item</button>
+            <p style="font-size: 0.7em">(maximum 10 items)</p>
+          </div>
         </div>
       </div>
-     </div>
-     <div class="col-4">
+      <div class="col-4">
 
-     </div>
-     <div class="col-4">
+      </div>
+      <div class="col-4">
         <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown button
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <div class="check-mover">
-                    <label class="dropdown-item"><input type="checkbox" data-allergens="glutten">glutten</label>
-                    <label class="dropdown-item"><input type="checkbox" data-allergens="dairy">dairy</label>
-                    <label class="dropdown-item"><input type="checkbox"></label>
-                    <label class="dropdown-item"><input type="checkbox"></label>
-                  </div>
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Dietary Restrictions
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div class="check-mover">
+              <label class="dropdown-item"><input type="checkbox" value="gluten"> gluten allergy</label>
+              <label class="dropdown-item"><input type="checkbox" value="dairy"> dairy allergy</label>
+              <label class="dropdown-item"><input type="checkbox" value="tree-nuts"> tree nut allergy</label>
+              <label class="dropdown-item"><input type="checkbox" value="peanuts"> peanut allergy</label>
+              <label class="dropdown-item"><input type="checkbox" value="soy"> soy allergy</label>
+              <label class="dropdown-item"><input type="checkbox" value="vegetarian"> vegetarian</label>
+              <label class="dropdown-item"><input type="checkbox" value="vegan"> vegan</label>
+              <label class="dropdown-item"><input type="checkbox" value="kosher"> kosher</label>
+              <label class="dropdown-item"><input type="checkbox" value="kosher"> halal</label>
             </div>
           </div>
-
-     </div>
-    </div>
-    
-    
-    
-      <div class="card">
-        <div class="card-body">
-            <div class="ingredientList">
-              <!-- // test code  -->
-                <button class="ingredients-list">broccoli</button>
-                <button class="ingredients-list">carrot</button>
-                <button class="ingredients-list">gummi bears</button>
-                <button class="ingredients-list">soda</button>
-                <button class="ingredients-list">broccoli</button>
-                <button class="ingredients-list">carrot</button>
-                <button class="ingredients-list">gummi bears</button>
-                <button class="ingredients-list">soda</button>
-                <button class="ingredients-list">gummi bears</button>
-                <button class="ingredients-list">soda</button>
-              </div>
         </div>
+
+      </div>
     </div>
-  
+
+
+
+    <div class="card">
+      <div class="card-body">
+        <div id="ingredient-list-div">
+          <!-- // test code  -->
+          <button class="ingredients-list">broccoli</button>
+          <button class="ingredients-list">carrot</button>
+          <button class="ingredients-list">gummi bears</button>
+          <button class="ingredients-list">soda</button>
+          <button class="ingredients-list">broccoli</button>
+          <button class="ingredients-list">carrot</button>
+          <button class="ingredients-list">gummi bears</button>
+          <button class="ingredients-list">soda</button>
+          <button class="ingredients-list">gummi bears</button>
+          <button class="ingredients-list">soda</button>
+        </div>
+      </div>
+    </div>
+
 
     <div class="row">
-        <div class="col-4">
-        </div>
-        <div class="col-4">
-            <button type="button" class="btn btn-secondary btn-lg">Begin Search!</button>
-          </div>
-          <div class="col-4">
-            </div>
+      <div class="col-4">
       </div>
-
-      <div class="row">
-          <div class="card">
-              <div class="row no-gutters">
-                <div class="col-md-4">
-                  <img src="..." class="card-img" alt="...">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                  </div>
-                </div>
-              </div>
-            </div>
+      <div class="col-4">
+        <button type="button" class="btn btn-secondary btn-lg">Begin Search!</button>
       </div>
-
-
+      <div class="col-4">
+      </div>
     </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+    <div id="recipe-anchor-div"></div>
+    <div class="row">
+      <div class="card">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="..." class="card-img" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                content. This content is a little bit longer.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="assets/docs/front-end-script.js"></script>
+</body>
