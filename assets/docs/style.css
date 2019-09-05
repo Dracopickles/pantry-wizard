@@ -1,0 +1,19 @@
+.ingredientList{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-width: 50rem;
+  height: 6rem;
+}
+
+.check-mover{
+  display: flex;
+  flex-direction: column;
+  width: 10rem;
+  height: 5rem;
+}
+
+.input-group-append{
+  display: flex;
+  flex-direction: column;
+}
