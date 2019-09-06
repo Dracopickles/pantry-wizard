@@ -38,22 +38,22 @@ $('#add-keyword-button').click(function(){
 // function to remove item from search field
 $(document).on('click', '.ingredients-list', function(){
     let keywordToRemove = $(this).attr('keyword-attr');
-    for (let i = 0; i < keywordArray.length; i++) {
-        if (keywordToRemove === keywordArray[i]){
-            keywordArray.splice(i,1);
+    for (let i = 0; i < keywordArray.length; i++) { // loop through the array
+        if (keywordToRemove === keywordArray[i]){ // when you find the entry that matches the button
+            keywordArray.splice(i,1); // remove just that entry from the array
         }
       }
-    populateDivFromArray();
+    populateDivFromArray(); // and reprint the buttons, using the new array
 })
 
 // function to populate restrictions array from dropdown
 function populateRestrictionsFromDropdown(){
-    restrictionsArray = [];
-    let restrictionSelector = $('.restriction-key');
-    Object.keys(restrictionSelector).forEach(function(key){
-        if (restrictionSelector[key].checked){
-            let valueVar = restrictionSelector[key].value;
-            restrictionsArray.push(valueVar);
+    restrictionsArray = []; // clear the array first
+    let restrictionSelector = $('.restriction-key'); // store the whole set of divs with this class
+    Object.keys(restrictionSelector).forEach(function(key){ // render that as an object with keys, then look at each key
+        if (restrictionSelector[key].checked){ // if the current key has the checked property
+            let valueVar = restrictionSelector[key].value; // get the value of the key
+            restrictionsArray.push(valueVar); // store it in the array
         }        
     })
     console.log('restrictionsArray = ', restrictionsArray);
@@ -89,7 +89,7 @@ function generateCardFromAPI(recipeImg, recipeHTML, recipeName, recipeSummary){
     cardDiv.append(rowDiv);
 
     // and a larger row to stick card in
-    hrefDiv = $('<a>')
+    let hrefDiv = $('<a>')
     hrefDiv.attr('href', recipeHTML);
     rowDiv = $('<div class="row">');
     rowDiv.append(cardDiv);
