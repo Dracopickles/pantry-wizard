@@ -17,7 +17,6 @@ function populateDivFromArray(){
 $('#add-keyword-button').click(function(){
     event.preventDefault(); // don't reload the page
     let skipVar = false;
-
     let currentKey = $('#keyword-text').val().trim();
     currentKey = currentKey.toLowerCase();
 
@@ -31,10 +30,9 @@ $('#add-keyword-button').click(function(){
     if (skipVar === false){
         keywordArray.push(currentKey);
     }
-    
-    // clear & repopulate div
+    // clear keyword box, clear & repopulate div
+    $('#keyword-text').empty();
     populateDivFromArray();
-
 })
 
 // function to remove item from search field
@@ -50,11 +48,6 @@ $(document).on('click', '.ingredients-list', function(){
 
 // function to populate restrictions array from dropdown
 function populateRestrictionsFromDropdown(){
-    // ???
-}
-
-// function to run search
-function storeRestrictions(){
     restrictionsArray = [];
     let restrictionSelector = $('.restriction-key');
     Object.keys(restrictionSelector).forEach(function(key){
@@ -66,10 +59,6 @@ function storeRestrictions(){
     console.log('restrictionsArray = ', restrictionsArray);
 }
 
-$('#run-search-button').on('click', function(){
-    storeRestrictions();
-});
-
 /* some dummy variables for test pending API functions */
 let recipeImg = 'https://assets.simplyrecipes.com/wp-content/uploads/2007/01/homemade-pizza-vertical-a-1200.jpg'
 let recipeHTML = 'https://www.simplyrecipes.com/recipes/homemade_pizza/'
@@ -77,7 +66,7 @@ let recipeName = 'Homemade Pizza'
 let recipeSummary = 'It\'s homemade pizza. If you can\'t figure out what homemmade pizza is I don\'t know that I can help you.'
 
 // function to generate card from API data
-function generateCardFromAPI(){
+function generateCardFromAPI(recipeImg, recipeHTML, recipeName, recipeSummary){
     // make a row to hold image & text
     let rowDiv = $('<div class="row no-gutters">');
 
@@ -100,10 +89,20 @@ function generateCardFromAPI(){
     cardDiv.append(rowDiv);
 
     // and a larger row to stick card in
+    hrefDiv = $('<a>')
+    hrefDiv.attr('href', recipeHTML);
     rowDiv = $('<div class="row">');
     rowDiv.append(cardDiv);
-
-    $('#recipe-anchor-div').append(rowDiv);
+    hrefDiv.append(rowDiv);
+    $('#recipe-anchor-div').append(hrefDiv);
 }
 
-generateCardFromAPI();
+
+// send the search to the API, generate 
+$('#run-search-button').on('click', function(){
+    populateRestrictionsFromDropdown();
+    // run API function()
+
+    // run cardmaker
+    generateCardFromAPI(recipeImg, recipeHTML, recipeName, recipeSummary);
+});
