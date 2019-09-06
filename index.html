@@ -19,6 +19,8 @@
     <h1 class="display-4">Hello, User!</h1>
     <p class="lead">With this app, we hope you will find a delicious recipe!</p>
     <hr class="my-4">
+    <p>Click this button to make a account!</p>
+    <a class="btn btn-primary" href="#" role="button">button</a>
     <p>And we will keep making improvements to make your home life better!</p>
     <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
   </div>
@@ -26,7 +28,8 @@
     <div class="row">
       <div class="col-4">
         <div class="input-group mb-3">
-          <input type="text" id="keyword-text" class="form-control" aria-label="add-keyword" aria-describedby="add-keyword-button">
+          <input type="text" id="keyword-text" class="form-control" aria-label="add-keyword"
+            aria-describedby="add-keyword-button">
           <div class="input-group-append">
             <button class="btn btn-outline-secondary" type="button" id="add-keyword-button">Add item</button>
             <p style="font-size: 0.7em">(maximum 10 items)</p>
@@ -44,19 +47,24 @@
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <div class="check-mover">
-              <label class="dropdown-item"><input type="checkbox" value="gluten"> gluten allergy</label>
-              <label class="dropdown-item"><input type="checkbox" value="dairy"> dairy allergy</label>
-              <label class="dropdown-item"><input type="checkbox" value="tree-nuts"> tree nut allergy</label>
-              <label class="dropdown-item"><input type="checkbox" value="peanuts"> peanut allergy</label>
-              <label class="dropdown-item"><input type="checkbox" value="soy"> soy allergy</label>
-              <label class="dropdown-item"><input type="checkbox" value="vegetarian"> vegetarian</label>
-              <label class="dropdown-item"><input type="checkbox" value="vegan"> vegan</label>
-              <label class="dropdown-item"><input type="checkbox" value="kosher"> kosher</label>
-              <label class="dropdown-item"><input type="checkbox" value="kosher"> halal</label>
+              <label class="dropdown-item"><input type="checkbox" class="restriction-key" value="gluten"> gluten
+                allergy</label>
+              <label class="dropdown-item"><input type="checkbox" class="restriction-key" value="dairy"> dairy
+                allergy</label>
+              <label class="dropdown-item"><input type="checkbox" class="restriction-key" value="tree-nuts"> tree nut
+                allergy</label>
+              <label class="dropdown-item"><input type="checkbox" class="restriction-key" value="peanuts"> peanut
+                allergy</label>
+              <label class="dropdown-item"><input type="checkbox" class="restriction-key" value="soy"> soy
+                allergy</label>
+              <label class="dropdown-item"><input type="checkbox" class="restriction-key" value="vegetarian">
+                vegetarian</label>
+              <label class="dropdown-item"><input type="checkbox" class="restriction-key" value="vegan"> vegan</label>
+              <label class="dropdown-item"><input type="checkbox" class="restriction-key" value="kosher"> kosher</label>
+              <label class="dropdown-item"><input type="checkbox" class="restriction-key" value="kosher"> halal</label>
             </div>
           </div>
         </div>
-
       </div>
     </div>
 
@@ -65,17 +73,6 @@
     <div class="card">
       <div class="card-body">
         <div id="ingredient-list-div">
-          <!-- // test code  -->
-          <button class="ingredients-list">broccoli</button>
-          <button class="ingredients-list">carrot</button>
-          <button class="ingredients-list">gummi bears</button>
-          <button class="ingredients-list">soda</button>
-          <button class="ingredients-list">broccoli</button>
-          <button class="ingredients-list">carrot</button>
-          <button class="ingredients-list">gummi bears</button>
-          <button class="ingredients-list">soda</button>
-          <button class="ingredients-list">gummi bears</button>
-          <button class="ingredients-list">soda</button>
         </div>
       </div>
     </div>
@@ -85,7 +82,7 @@
       <div class="col-4">
       </div>
       <div class="col-4">
-        <button type="button" class="btn btn-secondary btn-lg">Begin Search!</button>
+        <button type="button" id="run-search-button" class="btn btn-secondary btn-lg">Begin Search!</button>
       </div>
       <div class="col-4">
       </div>

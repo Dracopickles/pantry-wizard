@@ -54,9 +54,21 @@ function populateRestrictionsFromDropdown(){
 }
 
 // function to run search
-    // get all keywords from search field
-    // get all restrictions from dropdown list
-    // send to API function
+function storeRestrictions(){
+    restrictionsArray = [];
+    let restrictionSelector = $('.restriction-key');
+    Object.keys(restrictionSelector).forEach(function(key){
+        if (restrictionSelector[key].checked){
+            let valueVar = restrictionSelector[key].value;
+            restrictionsArray.push(valueVar);
+        }        
+    })
+    console.log('restrictionsArray = ', restrictionsArray);
+}
+
+$('#run-search-button').on('click', function(){
+    storeRestrictions();
+});
 
 /* some dummy variables for test pending API functions */
 let recipeImg = 'https://assets.simplyrecipes.com/wp-content/uploads/2007/01/homemade-pizza-vertical-a-1200.jpg'
