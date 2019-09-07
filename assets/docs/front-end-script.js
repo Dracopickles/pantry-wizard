@@ -1,15 +1,16 @@
 let keywordArray = [];
 let restrictionsArray = [];
+let indexVar = 0;
 
 // function to populate div from array
 function populateDivFromArray(){
     $('#ingredient-list-div').empty(); // clear it first
     for (let i = 0; i < keywordArray.length; i++) {
-        let btn = $('<button class="ingredients-list">');
+        let btnDiv = $('<button class="ingredients-list">');
         // give it an attribute = to its text so we can find and delete later
-        btn.attr('keyword-attr', keywordArray[i])
+        btnDiv.attr('keyword-attr', keywordArray[i])
            .text(keywordArray[i]);
-        $('#ingredient-list-div').append(btn);
+        $('#ingredient-list-div').append(btnDiv);
     }
 }
 
@@ -31,7 +32,7 @@ $('#add-keyword-button').click(function(){
         keywordArray.push(currentKey);
     }
     // clear keyword box, clear & repopulate div
-    $('#keyword-text').empty();
+    $('#keyword-text').val('');
     populateDivFromArray();
 })
 
@@ -44,6 +45,13 @@ $(document).on('click', '.ingredients-list', function(){
         }
       }
     populateDivFromArray(); // and reprint the buttons, using the new array
+})
+
+// function to save recipe to favorites
+$(document).on('click', '.save-button', function(){
+    console.log('you clicked the button');
+    let cardToSave = '#' + $(this).attr('index');
+    // push $(cardToSave).html to firebase as a variable
 })
 
 // function to populate restrictions array from dropdown
@@ -60,10 +68,10 @@ function populateRestrictionsFromDropdown(){
 }
 
 /* some dummy variables for test pending API functions */
-let recipeImg = 'https://assets.simplyrecipes.com/wp-content/uploads/2007/01/homemade-pizza-vertical-a-1200.jpg'
-let recipeHTML = 'https://www.simplyrecipes.com/recipes/homemade_pizza/'
-let recipeName = 'Homemade Pizza'
-let recipeSummary = 'It\'s homemade pizza. If you can\'t figure out what homemmade pizza is I don\'t know that I can help you.'
+const recipeImg = 'https://assets.simplyrecipes.com/wp-content/uploads/2007/01/homemade-pizza-vertical-a-1200.jpg'
+const recipeHTML = 'https://www.simplyrecipes.com/recipes/homemade_pizza/'
+const recipeName = 'Homemade Pizza'
+const recipeSummary = 'It\'s homemade pizza. If you can\'t figure out what homemmade pizza is I don\'t know that I can help you.'
 
 // function to generate card from API data
 function generateCardFromAPI(recipeImg, recipeHTML, recipeName, recipeSummary){
@@ -81,6 +89,12 @@ function generateCardFromAPI(recipeImg, recipeHTML, recipeName, recipeSummary){
                 + '</h5><p class="card-text">' + recipeSummary
                 + '</p></div>');
 
+    // create a button to save the recipe
+    let buttonDiv = $('<p class="card-text">');
+    buttonDiv.html('<small class="btn-outline-secondary save-button">Save this recipe for later</small>')
+             .attr('index', 'card-'+ indexVar);
+    textDiv.append(buttonDiv);
+
     // add image & text to row
     rowDiv.append(imageDiv)
           .append(textDiv);
@@ -90,14 +104,17 @@ function generateCardFromAPI(recipeImg, recipeHTML, recipeName, recipeSummary){
     cardDiv.append(rowDiv);
 
     // and a larger row to stick card in
-    let hrefDiv = $('<a>')
-    hrefDiv.attr('href', recipeHTML);
-    rowDiv = $('<div class="row">');
-    rowDiv.append(cardDiv);
-    hrefDiv.append(rowDiv);
-    $('#recipe-anchor-div').append(hrefDiv);
+/*    let hrefDiv = $('<a>')
+    hrefDiv.attr('href', recipeHTML); */
+    rowDiv = $('<div class="row recipe-card">')
+    rowDiv.attr('id', 'card-' + indexVar)
+          .append(cardDiv);
+/*    hrefDiv.append(rowDiv);
+    $('#recipe-anchor-div').append(hrefDiv); */
+    $('#recipe-anchor-div').append(rowDiv); //delete this line if we add the commented lines back in
+    
+    indexVar++;
 }
-
 
 // send the search to the API, generate 
 $('#run-search-button').on('click', function(){
