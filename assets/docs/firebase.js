@@ -49,7 +49,7 @@ $("#password-checker").on("click", function(event){
       console.log(e.val());
       if (e.val().email === email && e.val().password === password){
       // what happens if right email or password?
-      console.log("succss")
+      console.log("success")
       isUserFound = true;
       localStorage.setItem("logged-in", true);
       }
