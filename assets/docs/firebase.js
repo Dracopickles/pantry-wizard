@@ -35,14 +35,35 @@ $("#add-email").on("click", function(event){
     email: email,
     password: password,
     dateAdded: firebase.database.ServerValue.TIMESTAMP
-  });
+  })
+});
+
 
 $("#password-checker").on("click", function(event){
-  database.ref('/users/' + userId).once('value').then(function(snapshot){
-    var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+  event.preventDefault();
+  let email = $("#email-input").val()
+  let password = $("#password-input").val()
+  let isUserFound = false; 
+  database.ref('/users/').once('value').then(function(snapshot){
+    snapshot.forEach(function(e) {
+      console.log(e.val());
+      if (e.val().email === email && e.val().password === password){
+      // what happens if right email or password?
+      console.log("succss")
+      isUserFound = true;
+      localStorage.setItem("logged-in", true);
+      }
+
+    });
+    if (!isUserFound){
+      console.log (isUserFound);
+      // what happens if wrong emai or password?
+      alert("this email or password is incorrect!");
+    }
+    
+    // what happens if wrong emai or password?
     //...
 
     console.log(snapshot)
   });
-});  
 });
