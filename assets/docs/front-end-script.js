@@ -17,7 +17,6 @@ function populateDivFromArray(){
 $('#add-keyword-button').click(function(){
     event.preventDefault(); // don't reload the page
     let skipVar = false;
-
     let currentKey = $('#keyword-text').val().trim();
     currentKey = currentKey.toLowerCase();
 
@@ -31,32 +30,34 @@ $('#add-keyword-button').click(function(){
     if (skipVar === false){
         keywordArray.push(currentKey);
     }
-    
-    // clear & repopulate div
+    // clear keyword box, clear & repopulate div
+    $('#keyword-text').empty();
     populateDivFromArray();
-
 })
 
 // function to remove item from search field
 $(document).on('click', '.ingredients-list', function(){
     let keywordToRemove = $(this).attr('keyword-attr');
-    for (let i = 0; i < keywordArray.length; i++) {
-        if (keywordToRemove === keywordArray[i]){
-            keywordArray.splice(i,1);
+    for (let i = 0; i < keywordArray.length; i++) { // loop through the array
+        if (keywordToRemove === keywordArray[i]){ // when you find the entry that matches the button
+            keywordArray.splice(i,1); // remove just that entry from the array
         }
       }
-    populateDivFromArray();
+    populateDivFromArray(); // and reprint the buttons, using the new array
 })
 
 // function to populate restrictions array from dropdown
 function populateRestrictionsFromDropdown(){
-    // ???
+    restrictionsArray = []; // clear the array first
+    let restrictionSelector = $('.restriction-key'); // store the whole set of divs with this class
+    Object.keys(restrictionSelector).forEach(function(key){ // render that as an object with keys, then look at each key
+        if (restrictionSelector[key].checked){ // if the current key has the checked property
+            let valueVar = restrictionSelector[key].value; // get the value of the key
+            restrictionsArray.push(valueVar); // store it in the array
+        }        
+    })
+    console.log('restrictionsArray = ', restrictionsArray);
 }
-
-// function to run search
-    // get all keywords from search field
-    // get all restrictions from dropdown list
-    // send to API function
 
 /* some dummy variables for test pending API functions */
 let recipeImg = 'https://assets.simplyrecipes.com/wp-content/uploads/2007/01/homemade-pizza-vertical-a-1200.jpg'
@@ -65,7 +66,7 @@ let recipeName = 'Homemade Pizza'
 let recipeSummary = 'It\'s homemade pizza. If you can\'t figure out what homemmade pizza is I don\'t know that I can help you.'
 
 // function to generate card from API data
-function generateCardFromAPI(){
+function generateCardFromAPI(recipeImg, recipeHTML, recipeName, recipeSummary){
     // make a row to hold image & text
     let rowDiv = $('<div class="row no-gutters">');
 
@@ -88,10 +89,20 @@ function generateCardFromAPI(){
     cardDiv.append(rowDiv);
 
     // and a larger row to stick card in
+    let hrefDiv = $('<a>')
+    hrefDiv.attr('href', recipeHTML);
     rowDiv = $('<div class="row">');
     rowDiv.append(cardDiv);
-
-    $('#recipe-anchor-div').append(rowDiv);
+    hrefDiv.append(rowDiv);
+    $('#recipe-anchor-div').append(hrefDiv);
 }
 
-generateCardFromAPI();
+
+// send the search to the API, generate 
+$('#run-search-button').on('click', function(){
+    populateRestrictionsFromDropdown();
+    // run API function()
+
+    // run cardmaker
+    generateCardFromAPI(recipeImg, recipeHTML, recipeName, recipeSummary);
+});
