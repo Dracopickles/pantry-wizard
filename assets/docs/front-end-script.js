@@ -105,9 +105,11 @@ $('#run-search-button').on('click', function(){
     // 
     
     var item = keywordArray.join();
+    var excludeItems = restrictionsArray.join();
+    console.log ("excludeitems; ",excludeItems)
     $.ajax({
       url:
-        "https://api.spoonacular.com/recipes/findByIngredients?ingredients="+item+"&number=1&apiKey=dec60811916447f8af6fe8c1f9010bfd"
+        "https://api.spoonacular.com/recipes/findByIngredients?ingredients="+item+"&number=1&apiKey=dec60811916447f8af6fe8c1f9010bfd&intolerances=gluten,peanuts"+excludeItems
     }).then(response => {
       console.log("response is: ", response);
       response.forEach(recipe => {
