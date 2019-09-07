@@ -67,6 +67,7 @@ let recipeSummary = 'It\'s homemade pizza. If you can\'t figure out what homemma
 
 // function to generate card from API data
 function generateCardFromAPI(recipeImg, recipeHTML, recipeName, recipeSummary){
+    $('#recipe-anchor-div').empty(); // clear the current card list
     // make a row to hold image & text
     let rowDiv = $('<div class="row no-gutters">');
 
