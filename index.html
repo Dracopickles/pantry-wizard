@@ -19,10 +19,9 @@
     <h1 class="display-4">Hello, User!</h1>
     <p class="lead">With this app, we hope you will find a delicious recipe!</p>
     <hr class="my-4">
-    <p>Click this button to make a account!</p>
-    <a class="btn btn-primary" href="#" role="button">button</a>
     <p>And we will keep making improvements to make your home life better!</p>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    <a class="btn btn-primary" href="./login.html" role="button">Login or Register</a>
+    <a class="btn btn-primary" href="#" role="button">Learn more</a>
   </div>
   <div class="container">
     <div class="row">
@@ -46,19 +45,18 @@
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <div class="check-mover">
-              <label class="dropdown-item"><input type="checkbox" value="gluten"> gluten allergy</label>
-              <label class="dropdown-item"><input type="checkbox" value="dairy"> dairy allergy</label>
-              <label class="dropdown-item"><input type="checkbox" value="tree-nuts"> tree nut allergy</label>
-              <label class="dropdown-item"><input type="checkbox" value="peanuts"> peanut allergy</label>
-              <label class="dropdown-item"><input type="checkbox" value="soy"> soy allergy</label>
-              <label class="dropdown-item"><input type="checkbox" value="vegetarian"> vegetarian</label>
-              <label class="dropdown-item"><input type="checkbox" value="vegan"> vegan</label>
-              <label class="dropdown-item"><input type="checkbox" value="kosher"> kosher</label>
-              <label class="dropdown-item"><input type="checkbox" value="kosher"> halal</label>
+              <label class="dropdown-item"><input type="checkbox" class="restriction-key" value="gluten"> gluten allergy</label>
+              <label class="dropdown-item"><input type="checkbox" class="restriction-key" value="dairy"> dairy allergy</label>
+              <label class="dropdown-item"><input type="checkbox" class="restriction-key" value="tree-nuts"> tree nut allergy</label>
+              <label class="dropdown-item"><input type="checkbox" class="restriction-key" value="peanuts"> peanut allergy</label>
+              <label class="dropdown-item"><input type="checkbox" class="restriction-key" value="soy"> soy allergy</label>
+              <label class="dropdown-item"><input type="checkbox" class="restriction-key" value="vegetarian"> vegetarian</label>
+              <label class="dropdown-item"><input type="checkbox" class="restriction-key" value="vegan"> vegan</label>
+              <label class="dropdown-item"><input type="checkbox" class="restriction-key" value="kosher"> kosher</label>
+              <label class="dropdown-item"><input type="checkbox" class="restriction-key" value="halal"> halal</label>
             </div>
           </div>
         </div>
-
       </div>
     </div>
 
@@ -76,7 +74,7 @@
       <div class="col-4">
       </div>
       <div class="col-4">
-        <button type="button" class="btn btn-secondary btn-lg">Begin Search!</button>
+        <button type="button" id="run-search-button" class="btn btn-secondary btn-lg">Begin Search!</button>
       </div>
       <div class="col-4">
       </div>
