@@ -31,7 +31,7 @@ $('#add-keyword-button').click(function(){
         keywordArray.push(currentKey);
     }
     // clear keyword box, clear & repopulate div
-    $('#keyword-text').empty();
+    $('#keyword-text').val('');
     populateDivFromArray();
 })
 
