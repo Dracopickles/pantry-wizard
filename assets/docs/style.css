@@ -48,3 +48,11 @@
 #spacer-here{
   margin-bottom: 15px;
 }
+
+#body{
+  background-color: black;
+}
+
+.container{
+  background-color: chocolate;
+}
