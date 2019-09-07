@@ -2,8 +2,13 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  max-width: 50rem;
-  height: 6rem;
+  background-origin: padding-box;
+  width: 10rem;
+  height: 4rem;
+}
+
+.ingredients-list{
+  max-width: 5rem;
 }
 
 .check-mover{
@@ -21,4 +26,25 @@
 .card-img{
   max-width: 200px;
   max-height: 200px;
+}
+
+.btn-lg{
+  padding: 1rem;
+
+}
+
+#recipe-anchor-div{
+  margin-top: 5rem;
+}
+
+.col-md-4{
+  padding-top: 2rem
+}
+
+.card{
+  margin: .1rem
+}
+
+#spacer-here{
+  margin-bottom: 15px;
 }
