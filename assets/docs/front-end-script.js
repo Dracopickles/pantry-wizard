@@ -101,9 +101,29 @@ function generateCardFromAPI(recipeImg, recipeHTML, recipeName, recipeSummary){
 
 // send the search to the API, generate 
 $('#run-search-button').on('click', function(){
-    populateRestrictionsFromDropdown();
+    console.log("alive")
+    // 
+    
+    var item = keywordArray.join();
+    $.ajax({
+      url:
+        "https://api.spoonacular.com/recipes/findByIngredients?ingredients="+item+"&number=1&apiKey=dec60811916447f8af6fe8c1f9010bfd"
+    }).then(response => {
+      console.log("response is: ", response);
+      response.forEach(recipe => {
+          var recipeImg = recipe.image
+          var recipeHTML = recipe.title
+          var recipeName = recipe.title
+          var recipeSummary = recipe.title
+
+        generateCardFromAPI(recipeImg, recipeHTML, recipeName, recipeSummary);
+      })     
+    });
+  
+    //
+    // populateRestrictionsFromDropdown();
     // run API function()
 
     // run cardmaker
-    generateCardFromAPI(recipeImg, recipeHTML, recipeName, recipeSummary);
+ 
 });
