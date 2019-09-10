@@ -27,7 +27,8 @@
     <div class="row">
       <div class="col-md-4">
         <div class="input-group mb-3">
-          <input type="text" id="keyword-text" class="form-control" aria-label="add-keyword" aria-describedby="add-keyword-button">
+          <input type="text" id="keyword-text" class="form-control" aria-label="add-keyword"
+            aria-describedby="add-keyword-button">
           <div class="input-group-append">
             <button class="btn btn-outline-secondary" type="button" id="add-keyword-button">Add item</button>
             <p style="font-size: 0.7em">(maximum 10 items)</p>
@@ -39,8 +40,7 @@
       </div>
       <div class="col-md-4">
         <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Dietary Restrictions
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -60,52 +60,32 @@
       </div>
     </div>
 
-
-
     <div class="card">
+      <p style="text-align: center">Click on an item to remove it from the search list.</p>
       <div class="card-body">
         <div id="ingredient-list-div">
 
-      </div>
-    </div>
-
-
-    <div class="row">
-      <div class="col-4">
-      </div>
-      <div class="col-4">
-        <button type="button" id="run-search-button" class="btn btn-secondary btn-lg">Begin Search!</button>
-      </div>
-      <div class="col-4">
-      </div>
-    </div>
-
-    <div id="recipe-anchor-div"></div>
-    <div class="row">
-      <div class="card">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img src="..." class="card-img" alt="...">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                content. This content is a little bit longer.</p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-          </div>
         </div>
       </div>
     </div>
-
-
   </div>
 
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <div class="row">
+    <div class="col text-center">
+      <button type="button" id="run-search-button" class="btn btn-secondary btn-lg">Begin Search!</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div id="recipe-anchor-div"></div>
+  </div>
+
+  <div class="container">
+      <div id="wiki-anchor-div"></div>
+  </div>
+
+  <!-- jQuery, jpopper, bootstrap, local -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
