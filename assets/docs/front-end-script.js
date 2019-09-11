@@ -1,15 +1,16 @@
 let keywordArray = [];
 let restrictionsArray = [];
+let indexVar = 0;
 
 // function to populate div from array
 function populateDivFromArray(){
     $('#ingredient-list-div').empty(); // clear it first
     for (let i = 0; i < keywordArray.length; i++) {
-        let btn = $('<button class="ingredients-list">');
+        let btnDiv = $('<button class="ingredients-list">');
         // give it an attribute = to its text so we can find and delete later
-        btn.attr('keyword-attr', keywordArray[i])
+        btnDiv.attr('keyword-attr', keywordArray[i])
            .text(keywordArray[i]);
-        $('#ingredient-list-div').append(btn);
+        $('#ingredient-list-div').append(btnDiv);
     }
 }
 
@@ -46,6 +47,12 @@ $(document).on('click', '.ingredients-list', function(){
     populateDivFromArray(); // and reprint the buttons, using the new array
 })
 
+// function to save recipe to favorites
+$(document).on('click', '.save-button', function(){
+    console.log('you clicked the button');
+    let cardToSave = '#' + $(this).attr('index');
+    // push $(cardToSave).html to firebase as a variable
+})
 // function to populate restrictions array from dropdown
 function populateRestrictionsFromDropdown(){
     restrictionsArray = []; // clear the array first
@@ -56,18 +63,10 @@ function populateRestrictionsFromDropdown(){
             restrictionsArray.push(valueVar); // store it in the array
         }        
     })
-    console.log('restrictionsArray = ', restrictionsArray);
 }
-
-/* some dummy variables for test pending API functions */
-let recipeImg = 'https://assets.simplyrecipes.com/wp-content/uploads/2007/01/homemade-pizza-vertical-a-1200.jpg'
-let recipeHTML = 'https://www.simplyrecipes.com/recipes/homemade_pizza/'
-let recipeName = 'Homemade Pizza'
-let recipeSummary = 'It\'s homemade pizza. If you can\'t figure out what homemmade pizza is I don\'t know that I can help you.'
 
 // function to generate card from API data
 function generateCardFromAPI(recipeImg, recipeHTML, recipeName, recipeSummary){
-    $('#recipe-anchor-div').empty(); // clear the current card list
     // make a row to hold image & text
     let rowDiv = $('<div class="row no-gutters">');
 
@@ -81,6 +80,12 @@ function generateCardFromAPI(recipeImg, recipeHTML, recipeName, recipeSummary){
                 + '</h5><p class="card-text">' + recipeSummary
                 + '</p></div>');
 
+    // create a button to save the recipe
+    let buttonDiv = $('<p class="card-text">');
+    buttonDiv.html('<small class="btn-outline-secondary save-button">Save this recipe for later</small>')
+             .attr('index', 'card-'+ indexVar);
+    textDiv.append(buttonDiv);
+
     // add image & text to row
     rowDiv.append(imageDiv)
           .append(textDiv);
@@ -90,19 +95,45 @@ function generateCardFromAPI(recipeImg, recipeHTML, recipeName, recipeSummary){
     cardDiv.append(rowDiv);
 
     // and a larger row to stick card in
-    let hrefDiv = $('<a>')
-    hrefDiv.attr('href', recipeHTML);
-    rowDiv = $('<div class="row">');
-    rowDiv.append(cardDiv);
-    hrefDiv.append(rowDiv);
-    $('#recipe-anchor-div').append(hrefDiv);
+/*    let hrefDiv = $('<a>')
+    hrefDiv.attr('href', recipeHTML); */
+    rowDiv = $('<div class="row recipe-card">')
+    rowDiv.attr('id', 'card-' + indexVar)
+          .append(cardDiv);
+/*    hrefDiv.append(rowDiv);
+    $('#recipe-anchor-div').append(hrefDiv); */
+    $('#recipe-anchor-div').append(rowDiv); //delete this line if we add the commented lines back in
+    
+    indexVar++;
 }
 
+// ajax call to get wikipedia summary for random ingredient.
+// TODO: call this on an ingredient from the returned recipes, not from the source array
+function getRecipeSummaryFromWiki(){
+    let wikiSummary;
+    let randomIndex = Math.floor((Math.random() * keywordArray.length) + 1);
+    let searchKey = keywordArray[randomIndex-1];
+    console.log('searchKey is '+ searchKey);
+    $.ajax({
+        url:
+          'https://en.wikipedia.org/w/api.php?action=opensearch&search='+searchKey+'&limit=1&namespace=0&origin=*'
+      }).then(response => {
+        wikiSummary = response[2][0];
+        let wikiDiv = $('<p>');
+        wikiDiv.text(wikiSummary);
+        $('#wiki-anchor-div').empty()
+                             .append(wikiDiv);
+      });
+  }
 
 // send the search to the API, generate 
 $('#run-search-button').on('click', function(){
     console.log("alive")
-    // 
+    let numberSearches = 5;
+    // get our dropdown restrictions
+    populateRestrictionsFromDropdown();
+    // clear the current card list
+    $('#recipe-anchor-div').empty();
     
     var item = keywordArray.join();
     var excludeItems = restrictionsArray.join();
@@ -111,21 +142,13 @@ $('#run-search-button').on('click', function(){
       url:
         "https://api.spoonacular.com/recipes/findByIngredients?ingredients="+item+"&number=1&apiKey=dec60811916447f8af6fe8c1f9010bfd&intolerances=gluten,peanuts"+excludeItems
     }).then(response => {
-      console.log("response is: ", response);
       response.forEach(recipe => {
           var recipeImg = recipe.image
           var recipeHTML = recipe.title
           var recipeName = recipe.title
-          var recipeSummary = recipe.title
-
-        generateCardFromAPI(recipeImg, recipeHTML, recipeName, recipeSummary);
+          var recipeSummary = recipe.title;
+          generateCardFromAPI(recipeImg, recipeHTML, recipeName, recipeSummary);
       })     
     });
-  
-    //
-    // populateRestrictionsFromDropdown();
-    // run API function()
-
-    // run cardmaker
- 
+    getRecipeSummaryFromWiki('anyKey');
 });
