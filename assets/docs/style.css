@@ -11,6 +11,10 @@
   max-width: 5rem;
 }
 
+#add-keyword-button{
+  background-color: aliceblue;
+}
+
 .check-mover{
   display: flex;
   flex-direction: column;
