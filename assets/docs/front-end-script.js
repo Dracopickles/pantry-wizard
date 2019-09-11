@@ -113,7 +113,6 @@ function getRecipeSummaryFromWiki(){
     let wikiSummary;
     let randomIndex = Math.floor((Math.random() * keywordArray.length) + 1);
     let searchKey = keywordArray[randomIndex-1];
-    console.log('searchKey is '+ searchKey);
     $.ajax({
         url:
           'https://en.wikipedia.org/w/api.php?action=opensearch&search='+searchKey+'&limit=1&namespace=0&origin=*'
@@ -128,10 +127,10 @@ function getRecipeSummaryFromWiki(){
 
 // send the search to the API, generate 
 $('#run-search-button').on('click', function(){
-    console.log("alive")
     let numberSearches = 5;
     // get our dropdown restrictions
     populateRestrictionsFromDropdown();
+    console.log('restrictionsArray is: '+restrictionsArray);
     // clear the current card list
     $('#recipe-anchor-div').empty();
     
