@@ -140,7 +140,7 @@ $('#run-search-button').on('click', function(){
     console.log ("excludeitems; ",excludeItems)
     $.ajax({
       url:
-        "https://api.spoonacular.com/recipes/findByIngredients?ingredients="+item+"&number=1&apiKey=dec60811916447f8af6fe8c1f9010bfd&intolerances=gluten,peanuts"+excludeItems
+        "https://api.spoonacular.com/recipes/findByIngredients?ingredients="+item+"&number="+numberSearches+"&apiKey=dec60811916447f8af6fe8c1f9010bfd&intolerances="+excludeItems
     }).then(response => {
       response.forEach(recipe => {
           var recipeImg = recipe.image
