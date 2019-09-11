@@ -58,7 +58,11 @@ $("#password-checker").on("click", function(event){
     if (!isUserFound){
       console.log (isUserFound);
       // what happens if wrong emai or password?
-      alert("this email or password is incorrect!");
+      //alert("this email or password is incorrect!");
+      //random text;
+      let p = $('<p>').text(isUserFound);
+      
+      $("#error-message").append(p);
     }
     
     // what happens if wrong emai or password?
