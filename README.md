@@ -1,19 +1,4 @@
 # pantry-wizard
-KEY TASKS:
+Most of us have had this moment: You're staring into the fridge at the last can of soda, half a grapefruit and a block of cheese, or some similarly random collection of leftovers, getting hungrier by the second but with absolutely no idea how to make anything edible out of the weird array of misfit food in your kitchen.
 
-1. Create a front-end interface. This site should be mobile-friendly.
-- Way for users to enter the ingredients they have (up to 10)
-- A way to indicate tags like 'vegetarian,' 'kosher', or allergies
-- A place to display results
-- possibly a log-in so users can save their preferences & tags
-
-2. Access the recipe API
-- find an API that does what we need
-- figure out how to parse the information
-- write some functions that get results from API based on the user's needs
-
-3. Handle user input
-- is every ingredient a real item?
-- if it isn't, can we offer them a guess?
-- if there's a weird allergy, can we make sure to check synonyms and friends (egg/eggs, legumes/beans, etc)
-- get/store all user input as variables and hand them to API team
+Pantry Wizard is the solution. Simply enter up to twelve available ingredients on the front page, and Pantry Wizard will find a handful of recipes that you can make with what you've got on hand. Are you vegan, kosher, allergic to nuts, or gluten-free? Not a problem! Check off any common dietary restriction in the dropdown menu, and Pantry Wizard will be sure to avoid giving you recipes that violate those constraints. Want to save those restrictions for the next time you come by, or save certain recipes? Just make an account and Pantry Wizard will remember your preferences and keep track of any meals you ask it to hang on to. Pantry Wizard makes mealtime less stressful, saves trips to the store, and helps you make the most of your food.
